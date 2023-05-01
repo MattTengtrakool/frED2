@@ -52,3 +52,33 @@ Here's a detailed step-by-step guide to create a course-specific teaching assist
 
 - Continuously monitor the chatbot's performance and gather user feedback to identify any emerging issues or areas for improvement.
 - Update the chatbot with new course materials or adjustments to the rules and boundaries as necessary to maintain its relevance and effectiveness.
+## May 1 - Matt notes
+- Implemented backend using Flask and GPT-3.5-turbo model
+- Created a functional frontend interface with HTML, CSS, and JavaScript
+- Integrated user input and chatbot responses in the UI
+Added a flag button for users to provide feedback on chatbot responses
+- Implemented a feedback form that toggles on and off when the flag button is clicked
+- Included preset questions for users to quickly ask the chatbot
+- Added a loading animation in the response box to improve user experience
+Things I want to Add:
+1. Expand the preset questions:
+- Include additional preset questions tailored to each section and subsection.
+- Organize these questions into categories for easier navigation.
+- Implement a dropdown menu or collapsible panels for users to explore section-specific questions.
+2. Create a guided walkthrough feature:
+- Design a step-by-step tutorial that users can follow to learn about each section and subsection.
+- Offer a "next" button that guides users through a series of questions and explanations.
+- Allow users to skip steps or jump to a specific section if they prefer.
+3. Enhance chatbot's knowledge:
+- Provide the chatbot with more training data relevant to each section and subsection.
+- Fine-tune the model to understand section-related context and provide more accurate answers.
+- Add a table of contents or navigation menu:
+4. Implement a navigation menu on the app's interface to allow users to jump directly to a specific section or subsection.
+The menu can be a sidebar, a dropdown, or a collapsible panel.
+5. Personalize the user experience:
+- Allow users to save their progress, favorite questions, or bookmark sections for easy reference.
+- Enable users to set their preferences for the types of content they'd like to explore.
+- Utilize visuals and interactive elements:
+- Incorporate images, diagrams, or interactive components to help users better understand each section and subsection.
+- Consider using tooltips or pop-ups for additional explanations when necessary.
+6. Add more bounding + do research on this

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .feedback-form {
+        display: none;
+        margin-top: 20px;
+    }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            background-color: #1b9af7;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        button:hover {
+            background-color: #1683d3;
+        }
+
+        #response {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }.preset-questions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .preset-question {
+        background-color: #1b9af7;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+    }.spinner {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        border: 2px solid #1b9af7;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .preset-question:hover {
+        background-color: #1683d3;
+    }
+    </style>
+    <script>function toggleFeedbackForm() {
+        const feedbackForm = document.getElementById("feedbackForm");
+        feedbackForm.style.display = feedbackForm.style.display === "block" ? "none" : "block";
+    }
+    
+    async function submitFeedback() {
+        const inputText = document.getElementById("inputText").value;
+        const responseText = document.getElementById("response").innerHTML;
+        const feedbackText = document.getElementById("feedbackText").value;
+    
+        // Send feedback to your server (you need to implement this on the server-side)
+        const response = await fetch("/submit_feedback", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                input_text: inputText,
+                response_text: responseText,
+                feedback_text: feedbackText
+            })
+        });
+    
+        // Handle the response (e.g., display a success message)
+        if (response.ok) {
+            alert("Thank you for your feedback!");
+            toggleFeedbackForm();
+        } else {
+            alert("An error occurred while submitting your feedback. Please try again.");
+        }
+    }async function sendRequest() {
+    const inputText = document.getElementById("inputText").value;
+    const responseTextElement = document.getElementById("responseText");
+    const spinnerElement = document.getElementById("spinner");
+
+    // Show the spinner and clear the response text
+    spinnerElement.style.display = "block";
+    responseTextElement.innerHTML = "";
+
+    const response = await fetch("/chatbot", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input_text: inputText })
+    });
+
+    const jsonResponse = await response.json();
+
+    // Hide the spinner and display the response
+    spinnerElement.style.display = "none";
+    responseTextElement.innerHTML = jsonResponse.response;
+}
+
+    function askPresetQuestion(question) {
+    document.getElementById("inputText").value = question;
+    sendRequest();
+}
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>HesterBot</h1>
+        <textarea id="inputText" rows="7" placeholder="Type your message here"></textarea>
+        <br><div class="preset-questions">
+            <a class="preset-question" onclick="askPresetQuestion('Give me a study plan for section 3?')">Give me a study plan for section 3</a>
+            <a class="preset-question" onclick="askPresetQuestion('How does insertion sort work?')">How does insertion sort work?</a>
+            <a class="preset-question" onclick="askPresetQuestion('What are the benefit of heaps?')">What are the benefit of heaps?</a>
+            <!-- Add more preset questions as needed -->
+        </div>
+        <button onclick="sendRequest()">Send</button>
+        <h2>Response:</h2>
+        <div id="response">
+            <div class="spinner" id="spinner" style="display:none;"></div>
+            <div id="responseText"></div>
+        </div>
+        <div class="feedback-form" id="feedbackForm">
+            <h3>Provide feedback</h3>
+            <textarea id="feedbackText" rows="4" placeholder="What's wrong with the response?"></textarea>
+            <br>
+            <button onclick="submitFeedback()">Submit Feedback</button>
+        </div>
+    </div>
+</body>
+</html>

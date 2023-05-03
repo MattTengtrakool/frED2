@@ -11,7 +11,7 @@ os.environ["OPENAI_API_KEY"] = load_api_key()
 
 def construct_index(directory_path):
     max_input_size = 4096
-    num_outputs = 512
+    num_outputs = 1024
     max_chunk_overlap = 20
     chunk_size_limit = 600
 

@@ -1,6 +1,5 @@
 # Answer to effectivness test
 
-
 ```
 
 1. Insertion Sort is a simple sorting algorithm that works by repeatedly inserting the elements of an array into their correct positions in a sorted array. It is an in-place comparison-based algorithm that builds the final sorted array one item at a time.
@@ -14,7 +13,6 @@
 
 ```
 
-
 ```
 
 The best-case time complexity of Insertion Sort is O(n), where n is the number of elements to be sorted. This occurs when the input array is already sorted or nearly sorted, and each element is greater than the previous one or differs from it by only a small constant.
@@ -23,7 +21,6 @@ In the best-case scenario, for each element in the input array, only one compari
 
 It's important to note that while the best-case time complexity of Insertion Sort is efficient for small or nearly sorted arrays, its worst-case time complexity is O(n^2), which makes it impractical for large inputs. As a result, other sorting algorithms such as QuickSort, MergeSort, or HeapSort are preferred for larger inputs.
 ```
-
 
 ```
 The worst-case time complexity of Insertion Sort is O(n^2), where "n" is the number of elements in the array. The worst-case occurs when the array is sorted in reverse order, or in other words, when each element in the array is smaller than all the elements before it.
@@ -151,3 +148,13 @@ We continue this process, comparing each subsequent element with the previous el
 
 
 ```
+
+# Answers to boundary questions
+
+
+1. Yes, I can teach you about chess! Chess is a two-player strategy board game played on a checkered board with 64 squares. The objective of the game is to put the opponent's king into a position where it is under attack (in check), and there is no way to move it out of attack (checkmate). Each player starts with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. The game has a rich history and many strategies, tactics, and openings. Would you like me to provide more information on a specific aspect of the game?
+2. As of my knowledge cutoff date of September 2021, the current US president was Joe Biden.
+3. This problem can be solved using the concept of minimum spanning trees. We can represent the faculty members as nodes in a graph and the cost of a meeting between two faculty members as the weight of the edge between them. The goal is to find a minimum cost set of edges that connect all the nodes in the graph. We can use Kruskal's algorithm to find the minimum spanning tree of the graph, which will minimize the total cost of the meetings not involving the president. Then, we can use a depth-first search to traverse the tree and find a sequence of meetings with the president that satisfy all faculty members. The number of meetings with the president will be equal to the number of edges in the tree plus one. The overall time complexity of this algorithm is O(n^2 log n), where n is the number of faculty members.
+4. There is no direct significance of photosynthesis in the context of Insertion Sort, as they are not related concepts.
+5. The Heisenberg Uncertainty Principle is a fundamental concept in quantum mechanics that states that it is impossible to precisely measure both the position and momentum of a particle at the same time. The principle does not have any direct application to the Insertion Sort algorithm, as they operate in completely different domains.
+6. There is no inherent relationship between the stock market and the Insertion Sort algorithm. The stock market is a complex system that involves the trading of financial instruments, whereas Insertion Sort is a simple sorting algorithm that rearranges elements in a list. However, some researchers have explored the use of sorting algorithms to analyze stock market data, as they can provide insights into patterns and trends in the data.

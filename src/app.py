@@ -20,18 +20,19 @@ def construct_index(directory_path):
     llm_predictor = LLMPredictor(llm=ChatOpenAI(temperature=0.7, model_name="gpt-3.5-turbo", max_tokens=num_outputs))
 
     documents = SimpleDirectoryReader(directory_path).load_data()
-
+    
     index = GPTSimpleVectorIndex(documents, llm_predictor=llm_predictor, prompt_helper=prompt_helper)
 
     index.save_to_disk('index.json')
+    return GPTSimpleVectorIndex.load_from_disk('index.json')
 
-    return index
-def chatbot(input_text):
-    index = GPTSimpleVectorIndex.load_from_disk('index.json')
+def chatbot(input_text, index):
     response = index.query(input_text, response_mode="compact")
+    print(response)
     return response.response
 
 app = Flask(__name__)
+index = None
 
 @app.route("/", methods=["GET"])
 def index():
@@ -39,12 +40,14 @@ def index():
 
 @app.route("/chatbot", methods=["POST"])
 def chatbot_api():
+    global index
     input_text = request.json.get("input_text", "")
-    response = chatbot(input_text)
+    response = chatbot(input_text, index)
     return jsonify({"response": response})
 
 if __name__ == "__main__":
     src_directory = os.path.dirname(os.path.abspath(__file__))
-    docs_directory = os.path.join(src_directory, '..', 'docs')
+    docs_directory = os.path.join(src_directory, '..', 'data')
     index = construct_index(docs_directory)
+    
     app.run(debug=True)

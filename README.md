@@ -34,7 +34,7 @@ export OPENAI_API_KEY='your_api_key_here'
 import os
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
-os.chdir(script_directory)
+os.chdir(script_directory)'''
 
 ## Running the Chatbot
 

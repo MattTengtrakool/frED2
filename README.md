@@ -1,4 +1,4 @@
-##frED2: Custom-trained AI Chatbot for Education
+# frED2: Custom-trained AI Chatbot for Education
 
 This repository contains code for a custom-trained AI chatbot based on OpenAI's GPT-3.5-turbo model. The chatbot is designed to help answer questions related to specific educational content. This modified bot was designed to provide more accurate and contextually relevant responses based on the indexed information as well as provide a basis for research on context bounding for educational purposes. Read more here. 
 
